@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from www.gmetrix.net/browsersms4.0//ProjectInstructions46V2.aspx?tstKey=24904&lng=en-US by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Oct 2018 20:00:56 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>IIG Training</title>
+    <link rel="stylesheet" href="Styles/style.css" />
+    <link rel="stylesheet" href='Styles/ProjectV2.css' />
+
+
+
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
+
+</head>
+
+<body>
+    <form method="post"
+        action="http://www.gmetrix.net/browsersms4.0//ProjectInstructions46V2.aspx?tstKey=24904&amp;lng=en-US"
+        id="frmQuestion">
+        
+
+        <div class="aspNetHidden">
+
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="9A7FEFD0" />
+        </div>
+
+        <script type="text/javascript">
+
+
+
+            var currentScrollLocation;
+            function ToggleNavigation(elem, ToShow) {
+                if (ToShow == "divSample" || ToShow == "divVideo") {
+                    currentScrollLocation = $(document).scrollTop();
+                    $(document).scrollTop(0);
+                }
+                $(".NavigationSpan").removeClass("tabselected");
+                $(elem).addClass("tabselected");
+                $(".ContentDiv").hide();
+                $("#" + ToShow).show();
+                if (ToShow == "divInstructions") {
+                    $(document).scrollTop(currentScrollLocation);
+                }
+            }
+            $(document).ready(function () {
+
+
+
+
+                try { // hide all programming words
+
+
+                    $('p').filter(':contains("|EndRedWords|")').hide();
+                    $('[color="#ff0000"]').hide();
+
+
+                    $('font').removeAttr('color');
+
+                    $('strong').removeAttr('style');
+                    $('div[dir="rtl"]').addClass('displayInline');
+
+
+                } catch (e) { }
+                try {
+                    $(".HelpButton").each(function () {
+                        $(this).css("display", "inline"); //Hides lightbulb image if test is in testing mode.
+                        $(this).attr("src", "Images/Tip_02.png");
+                        $(this).attr("width", "16px");
+                        $(this).attr("height", "16px");
+                        $(this).attr("alt", "help");
+                        $(this).attr("title", "Click to toggle help");
+
+                        var currentclick = $(this).attr("onclick");
+                        var newclick = currentclick.replace(")", ", this.parentElement.parentElement)");
+                        $(this).attr("onclick", newclick);
+
+                    });
+                } catch (e) { }
+
+
+
+                GetSavedValues();
+                $.each(CheckedValues, function (index, value) {
+                    $('#' + value).prop('checked', true);
+                    $(".Nav" + value).addClass("navselected");
+
+
+
+                });
+            });
+
+            var CheckedValues = [];
+            function GetSavedValues() {
+                //CheckedValues = ["181464","181480"];
+                try {
+                    //stringy = stringy.replace(/\s/g, '');
+
+                    CheckedValues = projectTestCallbackObject.getSavedValues().replace(/\s/g, '').split(',');
+                } catch (e) { }
+            }
+            function SetSavedValues() {
+                //alert(CheckedValues.join(","));
+                try {
+                    projectTestCallbackObject.setSavedValues(CheckedValues.join(","));
+                } catch (e) { }
+            }
+
+            function handleClick(cb) {
+
+
+                if (cb.checked == true) {
+                    $(".Nav" + cb.id).addClass("navselected");
+                    var i = CheckedValues.indexOf(cb.id);
+                    if (i != -1) {
+                        CheckedValues.splice(i, 1);
+                    } // remove first to handle duplicates
+                    CheckedValues.push(cb.id);
+                }
+                else {
+                    $(".Nav" + cb.id).removeClass("navselected");
+                    var ix = CheckedValues.indexOf(cb.id);
+                    if (ix != -1) {
+                        CheckedValues.splice(ix, 1);
+                    }
+                }
+                SetSavedValues();
+            }
+
+
+            function ToggleElement(id, ParentLocation) {
+                $(ParentLocation).find(".help" + id).toggle();
+            }
+
+
+            function LaunchInWindow(uri) {
+                projectTestCallbackObject.launchInWindow(uri);
+            }
+
+        </script>
+        <div class="NavigationContainer">
+
+
+            <div class='NavigationItem' style="text-align: center; font-weight: bold">
+                <a href='#01'>
+                    Project2
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask1'>
+                <a href='#task1'>
+                    1.
+                    <span><span>Tìm và thay thế</span></span>
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask2'>
+                <a href='#task2'>
+                    2.
+                    <span><span>Kí tự đặc biệt</span></span>
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask3'>
+                <a href='#task3'>
+                    3.
+                    <span><span>Đầu trang</span></span>
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask4'>
+                <a href='#task4'>
+                    4.
+                    <span><span>Sao chép định dạng</span></span>
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask5'>
+                <a href='#task5'>
+                    5.
+                    <span><span>Giãn cách dòng</span></span>
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask6'>
+                <a href='#task6'>
+                    6.
+                    <span><span>Kiểu</span></span>
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask7'>
+                <a href='#task7'>
+                    7.
+                    <span><span>Xóa định dạng</span></span>
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask8'>
+                <a href='#task8'>
+                    8.
+                    <span><span>Chia cột</span></span>
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask9'>
+                <a href='#task9'>
+                    9.
+                    <span><span>Chèn ngắt phần</span></span>
+                </a>
+            </div>
+
+            <div class='NavigationItem Navtask10'>
+                <a href='#task10'>
+                    10.
+                    <span><span>Hướng trang</span></span>
+                </a>
+            </div>
+            <div class='NavigationItem Navtask11'>
+                <a href='#task10'>
+                    11.
+                    <span><span>Lưu</span></span>
+                </a>
+            </div>
+        
+
+
+        </div>
+        <!-- Nội dung-->
+        <div class="instructionContainer">
+
+            <div id="divInstructions" class="ContentDiv">
+                <div id="GmxTable" style="padding-top: 30px;">
+
+
+
+
+                    <br style="clear: both;" />
+
+                    <div class="container">
+                        <a name='01' class="Anchor">&nbsp;</a>
+                        <p class="Question">
+                            <A href="Word - Project 02.docx">Word - Project 2.docx</A> 
+                        </p>
+                        <!-- Bắt đầu 1 câu -->
+                        <a name='task1' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181607' onclick='handleClick(this);' />
+                            1. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 1</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Dùng tính năng Word để thay thế tất cả các từ “Ms Office” thành “Microsoft Office”.
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+
+                        <!-- kết thúc 1 câu-->
+                        <a name='task2' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            2. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 2</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Ở phần “Overview”, hãy chèn biểu tượng (symbol) "chữ i" ở cuối đoạn bắt đầu bằng “The website contains many ...”. Dùng phông chữ (font) Webdings và mã ký hiệu (character code) “105” (chữ i).
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+                        <a name='task3' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            3. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 3</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Trong dòng đầu trang (header) tài liệu, áp dụng hiệu ứng văn bản (text effect) Fill: Blue, Accent color 1; Shadow cho dòng chữ này.
+
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+                        <a name='task4' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            4. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 4</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Trong phần “MOS INTRODUCE”, sao chép định dạng của đoạn văn đầu tiên và áp dụng cho đoạn văn thứ 2.
+
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+                        <a name='task5' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            5. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 5</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Ở phần Overview, đổi giãn dòng (line spacing) của hai đoạn văn thành đúng (exactly) 15 pt.
+
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+                        <a name='task6' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            6. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 6</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Trên đề mục Overview, đoạn văn cuối cùng, hãy áp dụng kiểu (style) Subtle Emphasis cho văn bản đó.
+
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+                        <a name='task7' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            7. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 7</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Trong phần “List of Topics”, hãy xóa mọi định dạng (clear all formatting) khỏi dòng đầu tiên bắt đầu bằng “The following”.
+
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+                        <a name='task8' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            8. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 8</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p> Chia 4 đoạn văn sau tấm hình IIG Viet Nam thành 2 cột (columns), khoảng cách (spacing) giữa các cột là “0.3"” (“0.8 cm”).
+
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+                        <a name='task9' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            9. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 9</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Chèn ngắt phần (section break) Continuous vào phần đầu của đề mục “IIG VIET NAM”.
+
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+                        <a name='task10' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            10. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 10</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Thay đổi hướng (orientation) của riêng trang cuối cùng thành Khổ ngang (Landscape).
+
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+                        <a name='task10' class="Anchor">&nbsp;</a><br />
+                        <span class="CBOffset">
+                            <input type="checkbox" id='181608' onclick='handleClick(this);' />
+                            11. </span>
+                        <div class="Instruction">
+                            <div class="Title"><span>Task 11</span></div>
+                            <div class="Overview">
+                                <div class="OverviewItem"><span>
+                                        <p>Lưu một bản sao của tài liệu trong thư mục nặc định dưới dạng tệp văn bản cho phép Macro hoạt động có tên “Project 2”. 
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br style="clear: both" />
+                        <!-- kết thúc 1 câu-->
+
+                        <br style="clear: both" />
+
+                    </div>
+
+                    <br />
+                    <div class="TestName" style="text-align: center">
+                        End of Instructions</div>
+                    <br />
+                </div>
+            </div>
+
+            
+
+    
+        </div>
+
+    </form>
+</body>
+
+<!-- Mirrored from www.gmetrix.net/browsersms4.0//ProjectInstructions46V2.aspx?tstKey=24904&lng=en-US by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Oct 2018 20:01:29 GMT -->
+
+</html>
